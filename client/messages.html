@@ -1,13 +1,11 @@
-<header>
-  <h1>Chat App</h1>
-</header>
-
-<ul class="chat">
+<div></div>
+<ul id="chat" scroll="$ctrl.texts">
   <li class="transition" ng-repeat="message in $ctrl.texts | filter: $root.currentHashtag">
-    {{message.text}}
+    <strong>{{message.username ? message.username : "Anonymous"}}:</strong> {{message.text}}
   </li>
 </ul>
 
+
 <form class="new-message" ng-submit="$ctrl.addMessage($ctrl.newMessage)">
-    <input ng-model="$ctrl.newMessage" type="text" name="text"/>
+    <input ng-model="$ctrl.newMessage" type="text" name="text" autocomplete="off"/>
 </form>

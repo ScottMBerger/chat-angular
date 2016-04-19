@@ -1,13 +1,14 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import template from './messages.html';
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { Texts } from '../api/texts.js';
 
 class MessagesCtrl {
-    constructor($scope, $rootScope) {
+    constructor($scope, $rootScope, $timeout) {
         $scope.viewModel(this);
-        
+
         this.helpers({
           texts() {
             return Texts.find({});
@@ -15,10 +16,12 @@ class MessagesCtrl {
         });
     }
     addMessage(newMessage) {
-        // Insert a task into the collection
+        // Insert a message into the collection
         Texts.insert({
           text: newMessage,
-          createdAt: new Date
+          createdAt: new Date,
+          owner: Meteor.userId(),
+          username: Meteor.user() ? Meteor.user().username : "Anonymous"
         });
      
         // Clear form
@@ -29,5 +32,5 @@ class MessagesCtrl {
 export default angular.module('messages', [angularMeteor])
   .component('messages', {
     templateUrl: 'client/messages.html',
-    controller: ['$scope','$rootScope', MessagesCtrl]
+    controller: ['$scope','$rootScope','$timeout', MessagesCtrl]
   });

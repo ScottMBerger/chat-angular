@@ -22,3 +22,5 @@ angular-templates
 # angular:angular-material
 # muicss:mui
 pbastowski:angular-babel
+accounts-password
+dotansimha:accounts-ui-angular

@@ -20,9 +20,12 @@ class HashesCtrl {
         return hashes;
     }
     
-    constructor($scope, $rootScope) {
+    constructor($scope, $rootScope, $timeout) {
         $scope.setHash = function(hash) {
             $rootScope.currentHashtag = $rootScope.currentHashtag != hash ? hash : '';
+              $timeout(function(){
+                $("#chat").scrollTop($("#chat")[0].scrollHeight);
+              }, 450);
         };
         
         $scope.viewModel(this);
@@ -37,5 +40,5 @@ class HashesCtrl {
 export default angular.module('hashtags', [angularMeteor])
   .component('hashtags', {
     templateUrl: 'client/hashtags.html',
-    controller: ['$scope', '$rootScope', HashesCtrl]
+    controller: ['$scope', '$rootScope','$timeout', HashesCtrl]
   });

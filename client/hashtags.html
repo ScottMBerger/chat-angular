@@ -1,3 +1,4 @@
 <a href="#" ng-repeat="hashtag in $ctrl.hashtags">
-    <strong class="hash" ng-click="setHash(hashtag)">{{hashtag}} </strong>
+    <strong ng-if="$root.currentHashtag != hashtag" class="hash" ng-click="setHash(hashtag)">{{hashtag}} </strong>
+    <div ng-if="$root.currentHashtag == hashtag" class="chip hash"  ng-click="setHash(hashtag)">{{hashtag}} X</div>
 </a>
