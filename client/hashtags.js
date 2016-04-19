@@ -19,7 +19,12 @@ class HashesCtrl {
         Texts.find({}).forEach(insertion);
         return hashes;
     }
-    constructor($scope) {
+    
+    constructor($scope, $rootScope) {
+        $scope.setHash = function(hash) {
+            $rootScope.currentHashtag = $rootScope.currentHashtag != hash ? hash : '';
+        };
+        
         $scope.viewModel(this);
         this.helpers({
           hashtags() {
@@ -27,11 +32,10 @@ class HashesCtrl {
           }
         });
     }
-    
 }
  
 export default angular.module('hashtags', [angularMeteor])
   .component('hashtags', {
     templateUrl: 'client/hashtags.html',
-    controller: ['$scope', HashesCtrl]
+    controller: ['$scope', '$rootScope', HashesCtrl]
   });

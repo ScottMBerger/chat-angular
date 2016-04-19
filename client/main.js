@@ -1,10 +1,12 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
-import messages from './messages';
 import hashtags from './hashtags';
+import messages from './messages';
 
-angular.module('simple-todos', [
+
+var app = angular.module('simple-todos', [
   angularMeteor,
+  hashtags.name,
   messages.name,
-  hashtags.name
+  
 ]);

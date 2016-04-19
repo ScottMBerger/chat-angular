@@ -5,7 +5,7 @@ import { Mongo } from 'meteor/mongo';
 import { Texts } from '../api/texts.js';
 
 class MessagesCtrl {
-    constructor($scope) {
+    constructor($scope, $rootScope) {
         $scope.viewModel(this);
         
         this.helpers({
@@ -29,5 +29,5 @@ class MessagesCtrl {
 export default angular.module('messages', [angularMeteor])
   .component('messages', {
     templateUrl: 'client/messages.html',
-    controller: ['$scope', MessagesCtrl]
+    controller: ['$scope','$rootScope', MessagesCtrl]
   });
