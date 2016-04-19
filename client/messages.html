@@ -1,0 +1,13 @@
+<header>
+  <h1>Chat App</h1>
+</header>
+
+<ul class="chat">
+  <li ng-repeat="message in $ctrl.texts">
+    {{message.text}}
+  </li>
+</ul>
+
+<form class="new-message" ng-submit="$ctrl.addMessage($ctrl.newMessage)">
+    <input ng-model="$ctrl.newMessage" type="text" name="text"/>
+</form>

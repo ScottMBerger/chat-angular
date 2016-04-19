@@ -1,0 +1,8 @@
+.chat{
+    display:block;
+
+    height:500px;
+    word-wrap: break-word;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
