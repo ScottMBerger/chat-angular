@@ -3,7 +3,7 @@
 </header>
 
 <ul class="chat">
-  <li ng-repeat="message in $ctrl.texts | filter: $root.currentHashtag">
+  <li class="transition" ng-repeat="message in $ctrl.texts | filter: $root.currentHashtag">
     {{message.text}}
   </li>
 </ul>
