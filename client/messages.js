@@ -8,7 +8,7 @@ import { Texts } from '../api/texts.js';
 class MessagesCtrl {
     constructor($scope, $rootScope, $timeout) {
         $scope.viewModel(this);
-
+        this.subscribe('texts');
         this.helpers({
           texts() {
             return Texts.find({});
@@ -23,12 +23,12 @@ class MessagesCtrl {
           owner: Meteor.userId(),
           username: Meteor.user() ? Meteor.user().username : "Anonymous"
         });
-     
+
         // Clear form
         this.newMessage = '';
     }
 }
- 
+
 export default angular.module('messages', [angularMeteor])
   .component('messages', {
     templateUrl: 'client/messages.html',
